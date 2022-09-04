@@ -223,18 +223,10 @@ data() {
       },
     };
   },
-  // created: async function (){
-  //   try {
-  //     let response = await StudentServices.getALLStudents();
-  //     this.student = response.data;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // },
+
   methods : {
     submitCreate : async function(){
       try{
-        console.log( this.student );
         let response = await StudentServices.getALLStudents( this.student );
         console.log( response );
         if(response){

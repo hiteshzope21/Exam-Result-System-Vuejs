@@ -38,6 +38,7 @@
               v-model="student.students.email"
               class="form-control"
               placeholder="Email"
+              disabled
             />
           </div>
           <div class="mb-2">
@@ -54,6 +55,7 @@
              v-model="student.students.enrollment"
               class="form-control"
               placeholder="Enrollment Number"
+              disabled
             />
           </div>
           <div class="mb-2">

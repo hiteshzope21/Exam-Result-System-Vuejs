@@ -22,6 +22,7 @@
                   <div class="col">
                     <input
                       type="text"
+                      v-model="input"
                       class="form-control"
                       placeholder="Serch here"
                     />
@@ -51,7 +52,7 @@
     <div class="container mt-3">
       <div class="row">
         <div
-          class="col-md-4"
+          class="col-md-6"
           v-for="student of students.students"
           :key="student._id"
         >
@@ -152,12 +153,14 @@ export default {
             this.loading = false;
             this.$toast.success( "student record deleted successfully");
         }
-      }catch( error ){
-        this.errorMassage=error;
-        this.loading=false;
-      }
+        }catch( error ){
+          this.errorMassage=error;
+          this.loading=false;
         }
-    }
+        }
+        
+
+      }
 };
 </script>
 

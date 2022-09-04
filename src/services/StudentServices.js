@@ -23,4 +23,12 @@ export class StudentServices{
         return axios.delete(dataURL);
     }
 
+    static facultySignup(faculty){
+        let dataURL=`${this.serverURL}/auth/signup`;
+        return axios.post(dataURL,faculty);
+    }
+    static facultyLogin(faculty){
+        let dataURL=`${this.serverURL}/auth/signin`;
+        return axios.post(dataURL,faculty);
+    }
 }

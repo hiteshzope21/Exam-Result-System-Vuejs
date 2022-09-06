@@ -39,7 +39,8 @@
             <div class="col-md-6">
                 <div class="list-group">
                     <ul class="list-group">
-                            <li class="list-group-item">Name: <span class="fw-bold">{{student.students.name}}</span></li>
+                            <li class="list-group-item">
+                                : <span class="fw-bold">{{ student.students.name ? student.students.name : '' }}</span></li>
                             <li class="list-group-item">Fathre's Name: <span class="fw-bold">{{student.students.fathername}}</span></li>
                             <li class="list-group-item">Email: <span class="fw-bold">{{student.students.email}}</span></li>
                             <li class="list-group-item">Semester: <span class="fw-bold">{{student.students.semester}}</span></li>

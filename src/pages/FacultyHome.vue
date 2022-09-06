@@ -1,6 +1,7 @@
 <template>
   <div>
     <NavBar />
+    <!-- <pre>{{ students }}</pre> -->
     <div class="container mt-3">
       <div class="row">
         <div class="col">
@@ -22,7 +23,7 @@
                   <div class="col">
                     <input
                       type="text"
-                      v-model="input"
+                    
                       class="form-control"
                       placeholder="Serch here"
                     />
@@ -50,10 +51,12 @@
   </div>
 
     <div class="container mt-3">
-      <div class="row">
+      <div class="row" >
         <div
           class="col-md-6"
+          
           v-for="student of students.students"
+        
           :key="student._id"
         >
           <div class="card my-2 list-group-item-success shadow-lg">
@@ -157,8 +160,8 @@ export default {
           this.errorMassage=error;
           this.loading=false;
         }
-        }
-        
+        },
+
 
       }
 };

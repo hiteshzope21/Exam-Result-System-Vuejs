@@ -50,7 +50,7 @@ const router = new Router({
         },
         {
            name: 'ViewResult',
-           path: '/student/result',
+           path: '/student/result/:enrollment',
            component: ViewResult
         },
     

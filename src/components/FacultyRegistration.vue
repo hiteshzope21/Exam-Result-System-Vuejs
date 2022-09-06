@@ -1,15 +1,11 @@
 <template>
   <div>
-    <div class="container signupPage bg-info my- col-md-6">
+    <div class="container signupPage bg-info my-3 col-md-6">
       <h1 class="text-center text-white">SIGNUP</h1>
       <hr />
       <div>
-        <pre>
-          {{ faculty }}
-        </pre>
         <div class="row">
           <form @submit.prevent="handleSignup">
-           
             <div class="form-group m-3">
               <label for="name">Name </label>
               <input
@@ -70,19 +66,19 @@
             </div>
             <button type="submit" class="btn btn-primary m-3">Submit</button>
           </form>
+          <hr />
+          <p class="text-end">
+            Already have an Account ?
+            <router-link to="/facultylogin"> Login </router-link>
+          </p>
         </div>
       </div>
-      <hr />
-      <p class="float-end">
-        Already have an Account ?
-        <router-link to="/facultylogin"> Login </router-link>
-      </p>
     </div>
   </div>
 </template>
 
 <script>
-import   {StudentServices}   from "../services/StudentServices";
+import { StudentServices } from "../services/StudentServices";
 export default {
   name: "FacultyRegistration",
   data() {
@@ -92,28 +88,27 @@ export default {
         email: "",
         college: "",
         password: "",
-        confirm_password : ""
+        confirm_password: "",
       },
     };
   },
-  methods : {
-    handleSignup : async function(){
-      try{
-        let response = await StudentServices.facultySignup( this.faculty );
-        console.log( response );
-        if(response){
-          this.$toast.success(response.data.message)
-          return this.$router.push('/facultylogin')
-         }
-         else{
-          this.$toast.error("Error in Creating signup")
+  methods: {
+    handleSignup: async function () {
+      try {
+        let response = await StudentServices.facultySignup(this.faculty);
+        console.log(response);
+        if (response) {
+          this.$toast.success(response.data.message);
+          return this.$router.push("/facultylogin");
+        } else {
+          this.$toast.error("Error in Creating signup");
           return false;
         }
-      }catch( error ){
+      } catch (error) {
         console.log(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -126,7 +121,7 @@ label {
 }
 
 .signupPage {
-  width: 50%;
-  height: 640px;
+  /* width: 50%;
+  height: 555px; */
 }
 </style>

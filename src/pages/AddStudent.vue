@@ -4,7 +4,7 @@
       <div class="container mt-3">
       <div class="row">
         <div class="col">
-          <p class="h3 text-success fw-bold">AddContact</p>
+          <p class="h3 text-success fw-bold">ADD STUDENT INFO</p>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus cum
             fugiat et eligendi alias? Quod similique ducimus illo sed ex animi

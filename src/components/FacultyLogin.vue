@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>
-        <pre>{{ email }} {{ password }}</pre>
       <div class="container login bg-info">
         <h1 class="text-center text-white mt-3">Login</h1>
         <hr />
@@ -41,20 +40,22 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex'
+// import {mapActions, mapGetters} from 'vuex'
+import { StudentServices } from "../services/StudentServices";
 export default {
 name:'FacultyLogin',
 data(){
     return{
         email:'',
-        password:''
+        password:'',
+      
     };
 },
 computed : {
-    ...mapGetters(['getMessage'])
+    
 },
 methods : {
-    ...mapActions(['login']),
+    
 
     async onLogin(){
        const data  = {
@@ -72,17 +73,35 @@ methods : {
         }
         console.log(data);
 
-        const response = await this.login(data);
-        console.log("Login-Response : ", response);
+         const response = await StudentServices.facultyLogin(data);
+         console.log( "Response : ", response.data );
+          try{
 
-        if( response ){
-            this.$toast.success(this.getMessage);
-              this.$router.push("/faculty");
-        }else{
-            this.$toast.error("Error Occured !");
-        }
+          
+          if (response.data.success) {
+
+            localStorage.setItem('MESSAGE', response.data.message ),
+            localStorage.setItem('TOKEN', response.data.Faculty.JWTtoken)
+
+            const token = localStorage.getItem('TOKEN');
+            const message = localStorage.getItem('MESSAGE');
+
+            console.log(token);
+            console.log(message);
+
+            this.$toast.success("Successfully Registered !");
+            this.$router.push('/faculty');
+
+          } else{
+            console.log( response.data );
+            this.$toast.error("Error in Login !");
+          }
+          }
+          catch( error ){
+            this.$toast.error("Login failed !")
+            console.log( error );
+          }
     }
-
     
 }
 

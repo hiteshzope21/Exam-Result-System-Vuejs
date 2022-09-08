@@ -4,7 +4,7 @@
       <div class="container mt-3">
       <div class="row">
         <div class="col">
-          <p class="h3 text-success fw-bold">ADD STUDENT INFO</p>
+          <p class="h3 text-success fw-bold">ADD STUDENT INFOMATION</p>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus cum
             fugiat et eligendi alias? Quod similique ducimus illo sed ex animi
@@ -141,7 +141,7 @@
               type="number"
                v-model="student.marks03"
               class="form-control"
-              placeholder="Subject 4 Marks"
+              placeholder="Subject 3 Marks"
             />
           </div>
         </div>
@@ -169,7 +169,7 @@
               type="text"
               v-model="student.subject05"
               class="form-control"
-              placeholder="Subject 4"
+              placeholder="Subject 5"
             />
           </div>
           <div class="col-md-6 mb-2">
@@ -227,7 +227,7 @@ data() {
   methods : {
     submitCreate : async function(){
       try{
-        let response = await StudentServices.getALLStudents( this.student );
+        let response = await StudentServices.addStudentInfo( this.student );
         console.log( response );
         if(response){
           this.$toast.success(response.data.message)

@@ -1,13 +1,17 @@
 import axios from "axios";
 export class StudentServices {
-  // static serverURL='http://localhost:4444/resultsystem/api'; // Localhost
-  static serverURL =
-    "https://exam-result-system-backend.herokuapp.com/resultsystem/api"; // Production
+  static serverURL='http://localhost:4444/resultsystem/api'; // Localhost
+  // static serverURL =
+    // "https://exam-result-system-backend.herokuapp.com/resultsystem/api"; // Production
 
   // POST -  Add a Student Information
-  static getALLStudents(student) {
+  static addStudentInfo(student) {
     let dataURL = `${this.serverURL}/students/add/`;
-    return axios.post(dataURL, student);
+    return axios.post(dataURL, student ,  {
+      headers: {
+        accesstoken: localStorage.getItem("TOKEN"),
+      },
+    } );
   }
 
   // GET - Get the Student Record

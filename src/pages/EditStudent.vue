@@ -4,7 +4,7 @@
        <div class="container mt-3">
       <div class="row">
         <div class="col">
-          <p class="h3 text-success fw-bold text-center">Edit Contact</p>
+          <p class="h3 text-success fw-bold text-center">Edit Student</p>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus cum
             fugiat et eligendi alias? Quod similique ducimus illo sed ex animi
@@ -13,7 +13,19 @@
         </div>
       </div>
     </div>
-    <div class="container col-md-6">
+
+     <!-- spinner -->
+    <div v-if="loading">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <SpinnerRun/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container col-md-6" v-if="!loading">
       <div calss="row">
         <form @submit.prevent="updateSubmit">
           <div class="mb-2">
@@ -187,10 +199,11 @@
 <script>
 import NavBar from '../components/NavBar.vue'
 import   {StudentServices}   from "../services/StudentServices";
+import SpinnerRun from "../components/SpinnerRun.vue";
 export default {
 name:'EditStudent',
 components:{
-  NavBar
+  NavBar,SpinnerRun
 },
 data() {
     return {

@@ -83,11 +83,11 @@ methods : {
             localStorage.setItem('MESSAGE', response.data.message ),
             localStorage.setItem('TOKEN', response.data.Faculty.JWTtoken)
 
-            const token = localStorage.getItem('TOKEN');
-            const message = localStorage.getItem('MESSAGE');
+            // const token = localStorage.getItem('TOKEN');
+            // const message = localStorage.getItem('MESSAGE');
 
-            console.log(token);
-            console.log(message);
+            // console.log(token);
+            // console.log(message);
 
             this.$toast.success("Successfully Registered !");
             this.$router.push('/faculty');

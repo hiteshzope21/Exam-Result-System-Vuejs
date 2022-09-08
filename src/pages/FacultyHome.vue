@@ -23,13 +23,10 @@
                   <div class="col">
                     <input
                       type="text"
-                    
+                      v-model="search"
                       class="form-control"
                       placeholder="Serch here"
                     />
-                  </div>
-                  <div class="col">
-                    <input type="submit" class="btn btn-outline-dark" />
                   </div>
                 </div>
               </div>
@@ -54,9 +51,7 @@
       <div class="row" >
         <div
           class="col-md-6"
-          
           v-for="student of students.students"
-        
           :key="student._id"
         >
           <div class="card my-2 list-group-item-success shadow-lg">
@@ -131,16 +126,11 @@ export default {
   },
   created: async function () {
     try {
-         this.loading=true;
-      // this.$toast.success("Button Clicked !");
-      // this.$toast.error("Error Occured !");
+      this.loading=true;
       let response = await StudentServices.getALLStudentinfomation();
-
       this.students = response.data;
-      console.log(this.students);
       this.loading = false;
     } catch (error) {
-      this.errorMassage = error;
       this.loading= false;
     }
   },
@@ -157,13 +147,10 @@ export default {
             this.$toast.success( "student record deleted successfully");
         }
         }catch( error ){
-          this.errorMassage=error;
           this.loading=false;
         }
         },
-
-
-      }
+      },
 };
 </script>
 

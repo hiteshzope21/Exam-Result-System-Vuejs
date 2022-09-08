@@ -1,22 +1,28 @@
 <template>
-<nav class="navbar navbar-dark bg-success navbar-expand-sm">
+  <nav class="navbar navbar-dark bg-success navbar-expand-sm">
     <div class="container">
-        <router-link to="/faculty" class="navbar-brand">
-        <i class="fa fa-2x fa-home">
-        </i>      <span class="h4">FacultyHome</span>  
-        
-        </router-link>
-        
+      <router-link to="/faculty" class="navbar-brand">
+        <i class="fa fa-2x fa-home"> </i> <span class="h4">FacultyHome</span>
+      </router-link>
+
+      <button @click='logout' class="text-decoration-none btn">Logout</button>
     </div>
-</nav>
+  </nav>
 </template>
 
 <script>
 export default {
-name:'NAvBar',
-}
+  name: 'NAvBar',
+
+  methods: {
+    logout() {
+        console.log("button click")
+      console.log(localStorage.clear());
+      this.$router.replace("/facultylogin");
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>

@@ -9,60 +9,101 @@
             <div class="form-group m-3">
               <label for="name">Name </label>
               <input
-                v-model="faculty.name"
+                v-model="$v.faculty.name.$model"
                 type="text"
                 class="form-control inputField"
+                :class="{
+                  'is-valid': !$v.faculty.name.$invalid,
+                  'is-invalid': $v.faculty.name.$error,
+                }"
                 id="name"
                 placeholder="Enter Name"
               />
+              <div class="invalid-feedback">
+                <span v-if="!$v.faculty.name.required">Name is required !</span>
+              </div>
             </div>
             <div></div>
             <div class="row m-1">
               <div class="col-md-6">
                 <label for="email">Email address</label>
                 <input
-                  v-model="faculty.email"
+                  v-model="$v.faculty.email.$model"
                   type="email"
                   class="form-control inputField"
+                  :class="{
+                    'is-valid': !$v.faculty.email.$invalid,
+                    'is-invalid': $v.faculty.email.$error,
+                  }"
                   id="email"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
                 />
+                <div class="invalid-feedback">
+                  <span v-if="!$v.faculty.email.required"
+                    >Email is required !</span
+                  >
+                </div>
               </div>
               <div class="col-md-6">
                 <label for="college">College</label>
                 <input
-                  v-model="faculty.college"
+                  v-model="$v.faculty.college.$model"
                   type="text"
                   class="form-control inputField"
+                  :class="{
+                    'is-valid': !$v.faculty.college.$invalid,
+                    'is-invalid': $v.faculty.college.$error,
+                  }"
                   id="college"
                   aria-describedby="emailHelp"
                   placeholder="Enter college name"
                 />
+                <div class="invalid-feedback">
+                  <span v-if="!$v.faculty.college.required"
+                    >College is required !</span
+                  >
+                </div>
               </div>
             </div>
 
             <div class="form-group m-3">
               <label for="password">Password</label>
               <input
-                v-model="faculty.password"
+                v-model="$v.faculty.password.$model"
                 type="password"
                 class="form-control inputField"
                 id="password"
+                :class="{
+                  'is-valid': !$v.faculty.password.$invalid,
+                  'is-invalid': $v.faculty.password.$error,
+                }"
                 placeholder="Password"
               />
+              <div class="invalid-feedback">
+                <span v-if="!$v.faculty.password.required"
+                  >Password is required !</span
+                >
+              </div>
             </div>
 
             <div class="form-group m-3">
               <label for="confirm_password">Confirm Password </label>
               <input
                 type="password"
-                v-model="faculty.confirm_password"
+                v-model="$v.faculty.confirm_Password.$model"
                 class="form-control inputField"
+                :class="{
+                'is-invalid': $v.faculty.confirm_Password.$error,
+                'is-valid': password != '' ? !$v.faculty.confirm_Password.$invalid : '',
+              }"
                 id="confirm_password"
                 aria-describedby="emailHelp"
                 placeholder="Confirm your password "
               />
+                <div class="invalid-feedback">
+              <span v-if=" !$v.faculty.confirm_Password.sameAsPassword">Password does not match </span>
+            </div>
             </div>
             <button type="submit" class="btn btn-primary m-3">Submit</button>
           </form>
@@ -79,6 +120,7 @@
 
 <script>
 import { StudentServices } from "../services/StudentServices";
+import { required, email, sameAs } from "vuelidate/lib/validators";
 export default {
   name: "FacultyRegistration",
   data() {
@@ -88,9 +130,30 @@ export default {
         email: "",
         college: "",
         password: "",
-        confirm_password: "",
+        confirm_Password: "",
       },
     };
+  },
+
+  validations: {
+    faculty: {
+      name: {
+        required,
+      },
+      college: {
+        required,
+      },
+      email: {
+        required,
+        email,
+      },
+      password: {
+        required,
+      },
+      confirm_Password: {
+        sameAsPassword: sameAs("password"),
+      },
+    },
   },
   methods: {
     handleSignup: async function () {

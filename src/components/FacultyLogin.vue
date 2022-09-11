@@ -8,23 +8,41 @@
           <div class="form-group m-3">
             <label for="email">Email address</label>
             <input
+              v-model="$v.email.$model"
               type="email"
               class="form-control inputField"
+              :class="{
+                    'is-valid': !$v.email.$invalid,
+                    'is-invalid': $v.email.$error,
+                  }"
               id="email"
-              v-model="email"
               aria-describedby="emailHelp"
               placeholder="Enter email"
             />
+            <div class="invalid-feedback">
+                  <span v-if="!$v.email.required"
+                    >Email is required !</span
+                  >
+                </div>
           </div>
           <div class="form-group m-3">
             <label for="password">Password</label>
             <input
               type="password"
-              v-model="password"
+              v-model="$v.password.$model"
               class="form-control inputField"
               id="password"
+              :class="{
+                  'is-valid': !$v.password.$invalid,
+                  'is-invalid': $v.password.$error,
+                }"
               placeholder="Password"
             />
+            <div class="invalid-feedback">
+                <span v-if="!$v.password.required"
+                  >Password is required !</span
+                >
+              </div>
           </div>
 
           <button type="submit" class="btn btn-primary m-3">Submit</button>
@@ -40,8 +58,8 @@
 </template>
 
 <script>
-// import {mapActions, mapGetters} from 'vuex'
 import { StudentServices } from "../services/StudentServices";
+import { required, email} from "vuelidate/lib/validators";
 export default {
 name:'FacultyLogin',
 data(){
@@ -51,9 +69,15 @@ data(){
       
     };
 },
-computed : {
-    
-},
+validations: {
+      email : { 
+        required,
+        email,
+      },
+      password : { 
+        required,
+      },
+  },
 methods : {
     
 
@@ -89,7 +113,7 @@ methods : {
             // console.log(token);
             // console.log(message);
 
-            this.$toast.success("Successfully Registered !");
+            this.$toast.success("Login Successfully !");
             this.$router.push('/faculty');
 
           } else{

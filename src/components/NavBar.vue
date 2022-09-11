@@ -18,7 +18,7 @@ export default {
     logout() {
         console.log("button click")
       console.log(localStorage.clear());
-      this.$router.replace("/facultylogin");
+      this.$router.replace("/");
     },
   },
 };

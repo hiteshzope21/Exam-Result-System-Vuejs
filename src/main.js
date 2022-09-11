@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Router from 'vue-router';
+import Vuelidate from 'vuelidate';
 import router from './router';
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
@@ -10,7 +11,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 Vue.config.productionTip = false
 
 Vue.use(Router);
-
+Vue.use( Vuelidate );
 Vue.use(VueToast, {
   position: 'bottom-right',
 });

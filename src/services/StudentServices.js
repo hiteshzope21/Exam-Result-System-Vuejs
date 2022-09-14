@@ -1,8 +1,7 @@
 import axios from "axios";
 export class StudentServices {
   // static serverURL='http://localhost:4444/resultsystem/api'; // Localhost
-  // static serverURL =
-    "https://exam-result-system-backend.herokuapp.com/resultsystem/api"; // Production
+   static serverURL = "https://exam-result-system-backend.herokuapp.com/resultsystem/api"; // Production
 
   // POST -  Add a Student Information
   static addStudentInfo(student) {
@@ -15,11 +14,12 @@ export class StudentServices {
   }
 
   // GET - Get the Student Record
-  static getALLStudentinfomation() {
+  static getAllStudentinformation() {
     let dataURL = `${this.serverURL}/students`;
-    return axios.get(dataURL, {
-      headers: {
-        AccessToken: localStorage.getItem("TOKEN"),
+    return axios.get(dataURL,
+      {
+       headers: {
+          AccessToken: localStorage.getItem("TOKEN"),
       },
     });
   }

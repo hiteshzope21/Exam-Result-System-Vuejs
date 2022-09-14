@@ -11,22 +11,13 @@
               ><i class="fa fa-plus-circle"></i>New</router-link
             >
           </p>
-          <p class="fst-italic">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Repellendus deleniti, rerum culpa magni molestiae asperiores nemo
-            voluptatibus tenetur! Harum iusto iste eius facere.
-          </p>
+          
           <form>
             <div class="row">
               <div class="col-md-6">
                 <div class="row">
                   <div class="col">
-                    <input
-                      type="text"
-                      v-model="search"
-                      class="form-control"
-                      placeholder="Serch here"
-                    />
+                    <h4 class="">Student List</h4> 
                   </div>
                 </div>
               </div>
@@ -127,7 +118,7 @@ export default {
   created: async function () {
     try {
       this.loading=true;
-      let response = await StudentServices.getALLStudentinfomation();
+      let response = await StudentServices.getAllStudentinformation();
       this.students = response.data;
       this.loading = false;
     } catch (error) {

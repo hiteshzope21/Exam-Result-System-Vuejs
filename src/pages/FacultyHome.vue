@@ -1,7 +1,6 @@
 <template>
   <div>
     <NavBar />
-    <!-- <pre>{{ students }}</pre> -->
     <div class="container mt-3">
       <div class="row">
         <div class="col">
@@ -11,13 +10,13 @@
               ><i class="fa fa-plus-circle"></i>New</router-link
             >
           </p>
-          
+
           <form>
             <div class="row">
               <div class="col-md-6">
                 <div class="row">
                   <div class="col">
-                    <h4 class="">Student List</h4> 
+                    <h4 class="">Student List</h4>
                   </div>
                 </div>
               </div>
@@ -26,20 +25,19 @@
         </div>
       </div>
     </div>
-<!-- spinner -->
-  <div v-if="loading">
+    <!-- spinner -->
+    <div v-if="loading">
       <div class="container">
-          <div class="row">
-              <div class="col">
-                  <SpinnerRun/>
-              </div>
+        <div class="row">
+          <div class="col">
+            <SpinnerRun />
           </div>
-
+        </div>
       </div>
-  </div>
+    </div>
 
     <div class="container mt-3">
-      <div class="row" >
+      <div class="row">
         <div
           class="col-md-6"
           v-for="student of students.students"
@@ -80,13 +78,22 @@
                     align-items-center
                   "
                 >
-                  <router-link :to="`/student/view/${student._id}`" class="btn btn-warning my-1">
+                  <router-link
+                    :to="`/student/view/${student._id}`"
+                    class="btn btn-warning my-1"
+                  >
                     <i class="fa fa-eye"></i
                   ></router-link>
-                  <router-link :to="`/student/edit/${student._id}`" class="btn btn-primary my-1">
+                  <router-link
+                    :to="`/student/edit/${student._id}`"
+                    class="btn btn-primary my-1"
+                  >
                     <i class="fa fa-pen"></i
                   ></router-link>
-                  <button class="btn btn-danger my-1"  @click="clickDeletestudent(student._id)">
+                  <button
+                    class="btn btn-danger my-1"
+                    @click="clickDeletestudent(student._id)"
+                  >
                     <i class="fa fa-trash"></i>
                   </button>
                 </div>
@@ -107,41 +114,41 @@ export default {
   name: "FacultyHome",
   components: {
     NavBar,
-    SpinnerRun
+    SpinnerRun,
   },
   data: function () {
     return {
-      loading:false,
+      loading: false,
       students: [],
     };
   },
   created: async function () {
     try {
-      this.loading=true;
+      this.loading = true;
       let response = await StudentServices.getAllStudentinformation();
       this.students = response.data;
       this.loading = false;
     } catch (error) {
-      this.loading= false;
+      this.loading = false;
     }
   },
-      methods:{
-       clickDeletestudent: async function(studentId){
-            try{
-                this.loading=true;
-        let response = await StudentServices.deleteStudentinfomation( studentId );
-        
-        if(response){
-          let response= await StudentServices.getALLStudentinfomation(); //getting fresh data
-            this.students=response.data;
-            this.loading = false;
-            this.$toast.success( "student record deleted successfully");
+  methods: {
+    clickDeletestudent: async function (studentId) {
+      try {
+        this.loading = true;
+        let response = await StudentServices.deleteStudentinfomation(studentId);
+
+        if (response) {
+          let response = await StudentServices.getALLStudentinfomation(); //getting fresh data
+          this.students = response.data;
+          this.loading = false;
+          this.$toast.success("student record deleted successfully");
         }
-        }catch( error ){
-          this.loading=false;
-        }
-        },
-      },
+      } catch (error) {
+        this.loading = false;
+      }
+    },
+  },
 };
 </script>
 

@@ -26,7 +26,7 @@
           <div class="list-group">
             <ul class="list-group">
               <li class="list-group-item">
-                :
+                Name:
                 <span class="fw-bold">{{
                   student.students.name ? student.students.name : ""
                 }}</span>

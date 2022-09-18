@@ -15,7 +15,7 @@
       <div class="container mt-3">
           <div class="row">
               <div class="col">
-                  <p class="h3 text-danger fw-bold">-Enrollment Not Found</p>
+                  <p class="h3 text-danger">-Enrollment Not Found</p>
               </div>
           </div>
 

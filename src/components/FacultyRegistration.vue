@@ -1,6 +1,15 @@
 <template>
   <div>
-    <div class="container signupPage bg-info my-3 col-md-6">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <router-link class="nav-link text-white mx-3" to="/"><i class="fa fa-2x fa-home mx-2"> </i>Home <span class="sr-only">(current)</span></router-link>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="container bg-info my-3 col-md-6">
       <h1 class="text-center text-white">SIGNUP</h1>
       <hr />
       <div>
@@ -183,8 +192,5 @@ label {
   height: 35px;
 }
 
-.signupPage {
-  /* width: 50%;
-  height: 555px; */
-}
+
 </style>

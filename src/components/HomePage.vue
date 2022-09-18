@@ -5,16 +5,17 @@
     
 
     </div>
-    <div class="container text-center">
+    <div class="container text-center col-md-4 bg-primary mt-5 p-5 rounded">
+   
     <form @submit.prevent="resultButton">
       <div class="view-result">
         <div >  
           <input type="text" class="form-control enroll-value col-md-9" v-model="enrollment" placeholder="enter enrollment number" />
-          <!-- <input type="submit" class="ml-5 btn btn-primary mb-3 col-md-3" value="Submit" /> -->
+          
         </div>
         <div>
-          <button class="btn btn-danger"><router-link :to="`/student/result/${enrollment}`" class="text-decoration-none text-light"> View Result </router-link> </button>
-          <!-- <ViewResult :studentresult= 'studentresult' /> -->
+          <button class="btn btn-danger my-3"><router-link :to="`/student/result/${enrollment}`" class="text-decoration-none text-light"> View Result </router-link> </button>
+          
         </div>
 
       </div>
@@ -27,12 +28,12 @@
           faculty-login
         </router-link>
       </div>
+      </div>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
-
 import   {StudentServices}   from "../services/StudentServices";
 export default {
   name: "HomePage",
@@ -73,15 +74,4 @@ export default {
   height: 80px;
   
 }
-.enroll-value {
-  margin: 30px auto;
-}
-.container {
-  height: 300px;
-  margin-top: 100px;
-  width: 30%;
-  background:rgb(99, 177, 187);
-  padding : 20px;
-}
-
 </style>

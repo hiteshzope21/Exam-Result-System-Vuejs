@@ -1,9 +1,19 @@
 <template>
   <div>
+       <nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <router-link class="nav-link text-white mx-3" to="/"><i class="fa fa-2x fa-home mx-2"> </i>Home <span class="sr-only">(current)</span></router-link>
+      </li>
+    </ul>
+  </div>
+</nav>
     <div>
-      <div class="container login bg-info">
+      <div class="container bg-info my-3 col-md-4">
         <h1 class="text-center text-white mt-3">Login</h1>
         <hr />
+        <div class="row">
         <form @submit.prevent="onLogin">
           <div class="form-group m-3">
             <label for="email">Email address</label>
@@ -48,10 +58,11 @@
           <button type="submit" class="btn btn-primary m-3">Submit</button>
         </form>
         <hr />
-        <p class="float-end">
+        <p class="text-end">
           Do not have Account ?
           <router-link to="/facultysignup"> Signup </router-link>
         </p>
+        </div>
       </div>
     </div>
   </div>
@@ -133,11 +144,11 @@ methods : {
 </script>
 
 <style scoped>
-.login {
+/* .login {
   width: 40%;
   height: 430px;
   margin-top: 50px;
-}
+} */
 label {
   font-size: 25px;
 }

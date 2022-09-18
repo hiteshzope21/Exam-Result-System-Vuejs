@@ -16,8 +16,7 @@ export default {
 
   methods: {
     logout() {
-        console.log("button click")
-      console.log(localStorage.clear());
+      localStorage.clear();
       this.$router.replace("/");
     },
   },

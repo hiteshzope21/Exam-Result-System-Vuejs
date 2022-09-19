@@ -8,8 +8,6 @@ import EditStudent from '../pages/EditStudent';
 import ViewStudents from '../pages/ViewStudents';
 import ViewResult from '../pages/ViewResult';
 
-
-
 const router = new Router({
     mode: 'history',
     routes: [
@@ -52,9 +50,7 @@ const router = new Router({
            name: 'ViewResult',
            path: '/student/result/:enrollment',
            component: ViewResult
-        },
-    
-    
+        },  
     ]
 });
 

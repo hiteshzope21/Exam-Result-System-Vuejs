@@ -212,7 +212,7 @@ data() {
       student : {}
     };
   },
-      created: async function (){
+  created: async function (){
     try {
       this.loading=true;
       let response = await StudentServices.studentview(this.studentId);
@@ -228,7 +228,6 @@ data() {
         let response = await StudentServices.updateStudent( this.student.students,this.studentId );
         if(response){
           this.$toast.success(response.data.message)
-          // return this.$router.push(`/faculty`);
           console.log(response);
         }
       }catch( error ){
